@@ -6,9 +6,9 @@ use rand::thread_rng;
 
 fn main() {
 
-	let bolt_sign = '🔩';
+	let bolt_sign = '';
 
-    println!("{} Selam alejk my brozer {} \n", bolt_sign, bolt_sign);
+    println!("{}  Selam alejk my brozer {} \n", bolt_sign, bolt_sign);
     
     println!("You can reply here: ");
 
@@ -18,14 +18,20 @@ fn main() {
 
     println!("\nYou replied: {}", input_str);
 
-    generate_secret_number();
+    let random_number: u32 = generate_secret_number();
+    if random_number > 10 {
+    	println!("The number is bigger than 10");
+    }
+    else {
+    	println!("The number is smaller than 10");
+    }
 
-    println!("\Random generated tuple: {:?}", generate_tuple_random());
+    println!("\nRandom generated tuple: {:?}", generate_tuple_random());
 }
 
-fn generate_secret_number(){
+fn generate_secret_number() -> u32{
 	let number = thread_rng().gen_range(1,33);
-	println!("Secret number is: {}", number);
+	number
 }
 
 fn generate_tuple_random() -> (u32, u32, u32){
