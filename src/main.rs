@@ -1,12 +1,16 @@
 extern crate rand;
 
-use rand::Rng;
 use std::io::stdin;
-use rand::thread_rng;
+
+mod functions;
 
 fn main() {
 
-	let bolt_sign = '';
+	let bolt_sign = '🔩';
+
+	let some_string = String::from("This is some string which length is: ");
+
+	println!("{:?} {:?}", some_string, functions::calculate_string_length(&some_string));
 
     println!("{}  Selam alejk my brozer {} \n", bolt_sign, bolt_sign);
     
@@ -18,7 +22,7 @@ fn main() {
 
     println!("\nYou replied: {}", input_str);
 
-    let random_number: u32 = generate_secret_number();
+    let random_number: u32 = functions::generate_secret_number();
     if random_number > 10 {
     	println!("The number is bigger than 10");
     }
@@ -26,15 +30,6 @@ fn main() {
     	println!("The number is smaller than 10");
     }
 
-    println!("\nRandom generated tuple: {:?}", generate_tuple_random());
+    println!("\nRandom generated tuple: {:?}", functions::generate_tuple_random());
 }
 
-fn generate_secret_number() -> u32{
-	let number = thread_rng().gen_range(1,33);
-	number
-}
-
-fn generate_tuple_random() -> (u32, u32, u32){
-	let tup = (thread_rng().gen_range(1,33), thread_rng().gen_range(1,33), thread_rng().gen_range(1,33));
-	return tup
-}
