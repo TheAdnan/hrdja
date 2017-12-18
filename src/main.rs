@@ -3,14 +3,16 @@ extern crate rand;
 use std::io::stdin;
 
 mod functions;
-mod user_struct;
+mod user;
 
 fn main() {
 
     // Structs
-    let user = user_struct::init(1, String::from("Sakib"), String::from("sakib@sakib.co.uk"));
+    let user = user::User::make(1, String::from("Sakib"), String::from("sakib@sakib.co.uk"));
 
     println!("{:?}", user.username);
+
+    println!("{:?}", user.get_id());
 
     //String manipulation
 
