@@ -3,10 +3,18 @@ extern crate rand;
 use std::io::stdin;
 
 mod functions;
+mod user_struct;
 
 fn main() {
 
-	let bolt_sign = '🔩';
+    // Structs
+    let user = user_struct::init(1, String::from("Sakib"), String::from("sakib@sakib.co.uk"));
+
+    println!("{:?}", user.username);
+
+    //String manipulation
+
+    let bolt_sign = '🔩';
 
 	let some_string = String::from("This is some string which length is: ");
 
