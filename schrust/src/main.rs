@@ -4,7 +4,22 @@ fn main() {
   value2.push_str(" alejk");
   let value3 = value2.replace("Selam alejk", "merhaba");
   let value4 = replace_with_merhaba(&value2);
-  println!("{}, {}", value2, value3);
+  
+
+//Arrays and vectors
+  let someArray = ["This", "is", "an", "array"];
+
+  let mut aVector: Vec<&str> = vec!["This", "is", "a", "Vector"];
+
+
+  aVector.pop();
+  aVector.push("also a Vector");
+
+
+  for a in aVector{
+    println!("{:?}", a);
+  }
+
 }
 
 
