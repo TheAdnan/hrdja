@@ -29,6 +29,10 @@ impl UID for User {
     }
 }
 
+fn printing_stuff<T: PartialOrd>(a: T, b: T) -> bool{
+  a > b
+}
+
 
 
 fn main() {
@@ -40,6 +44,8 @@ fn main() {
 	u.print_me();
 	u2.print_me();
 	u.createUID();
+  let tr = printing_stuff(2, 5);
+  println!("{:?}", tr);
 	let value1: &'static str = "Selam";
 	let mut value2 = value1.to_string();
 	value2.push_str(" alejk");
