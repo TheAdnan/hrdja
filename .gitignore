@@ -1,4 +1,6 @@
 /target/
 **/*.rs.bk
-/car-go/target/
+/hello-rust/target/
+/hello-rust/.idea/
 /schrust/target/
+
