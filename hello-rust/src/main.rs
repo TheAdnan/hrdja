@@ -20,11 +20,24 @@ impl MineField{
             };
             &self.mines.push(mina);
         }
+        &self.generate_empty_fields();
     }
 
-    pub fn print_field(&self){
+    fn generate_empty_fields(&mut self){
+        for i in (&self.mines).iter(){
+
+        }
+    }
+
+    pub fn print_fields(&self){
+        let size = &self.size.1 - 1;
+        let mut counter: u32 = 0;
         for i in &self.mines{
-            println!("{:?}\n", i.position);
+            if size % counter == 0{
+                println!("\n");
+            }
+            println!("{:?} ", i.position);
+            counter = counter + 1;
         }
     }
 }
@@ -33,12 +46,12 @@ impl MineField{
 fn main() {
 
     let mut polje = MineField{
-        size: (22, 44),
+        size: (3, 3),
         mines: Vec::new()
     };
 
     &polje.generate_mines(12);
 
-    &polje.print_field();
-    
+    &polje.print_fields();
+
 }
