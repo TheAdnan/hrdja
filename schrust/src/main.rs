@@ -34,6 +34,13 @@ fn printing_stuff<T: PartialOrd>(a: T, b: T) -> bool{
 }
 
 
+mod some_modules{
+    pub fn module_function(){
+        println!("This is a test function");
+    }
+}
+
+
 
 fn main() {
 	let u = User{
@@ -52,7 +59,7 @@ fn main() {
 	let value3 = value2.replace("Selam alejk", "merhaba");
 	let value4 = replace_with_merhaba(&value2);
   
-
+    some_modules::module_function();
 //Arrays and vectors
   let someArray = ["This", "is", "an", "array"];
 
