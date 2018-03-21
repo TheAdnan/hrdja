@@ -16,6 +16,7 @@ pub struct MineField{
 
 
 impl MineField{
+
     pub fn find_by_coordinates(&mut self, x: u32, y: u32) -> bool{
         for element in self.mines.iter(){
             if element.position.0 == x && element.position.1 == y && element.active == false{
@@ -25,9 +26,8 @@ impl MineField{
         }
         true
     }
-}
 
-impl MineField{
+
     pub fn generate_mines(&mut self){
 
         &self.generate_empty_fields();

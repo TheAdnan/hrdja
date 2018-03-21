@@ -16,6 +16,8 @@ fn main() {
 
     &mine_field.generate_mines();
 
+    &mine_field.print_fields();
+
     let mut x = 0;
     let mut y = 0;
     loop{
@@ -42,8 +44,6 @@ fn main() {
             Err(..) => println!("this was not an integer: {}", trimmed_y),
         };
 
-
-
         if mine_field.find_by_coordinates(x, y) {
             println!("The game is over :(");
             break;
@@ -54,7 +54,7 @@ fn main() {
 
     }
 
-    println!("The mines are marked with 0: ");
+    println!("The mines are marked with o: ");
 
     &mine_field.print_fields_solved();
 
