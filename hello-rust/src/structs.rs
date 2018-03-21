@@ -14,33 +14,98 @@ pub struct MineField{
     pub mines: Vec<Mine>
 }
 
+
 impl MineField{
-    pub fn generate_mines(&mut self, num_of_mines: u32){
-        for i in 0..num_of_mines{
-            let mina = Mine{
-                position: (rand::thread_rng().gen_range(self.size.0, self.size.1), rand::thread_rng().gen_range(self.size.0, self.size.1)),
-                active: true
-            };
-            &self.mines.push(mina);
+    pub fn find_by_coordinates(&mut self, x: u32, y: u32) -> bool{
+        for element in self.mines.iter(){
+            if element.position.0 == x && element.position.1 == y && element.active == false{
+                self.remove_solved(x, y);
+                return false
+            }
         }
+        true
+    }
+}
+
+impl MineField{
+    pub fn generate_mines(&mut self){
+
         &self.generate_empty_fields();
+
+        let num_of_mines = self.size.0 * self.size.1;
+
+        for element in self.mines.iter_mut(){
+            if 1 == rand::thread_rng().gen_range(0, 3){
+                (*element).active = true;
+            }
+        }
+
     }
 
     fn generate_empty_fields(&mut self){
-        for i in (&self.mines).iter(){
-
+        let mut x = self.size.0;
+        let mut y = self.size.1;
+        while x > 0{
+            while y > 0{
+                let mina = Mine{
+                    position: (x - 1, y - 1),
+                    active: false
+                };
+                &self.mines.push(mina);
+                y = y - 1;
+            }
+            y = self.size.1;
+            x = x - 1;
         }
+
+    }
+
+    pub fn print_fields_solved(&self){
+        let x = &self.size.0;
+        let y = &self.size.1;
+        for i in &self.mines{
+            if (y - 1) == i.position.1{
+                println!("");
+            }
+            if i.active {
+                print!("o")
+            }
+            else{
+                print!("x");
+            }
+        }
+        println!("");
     }
 
     pub fn print_fields(&self){
-        let size = &self.size.1 - 1;
-        let mut counter: u32 = 0;
+        let x = &self.size.0;
+        let y = &self.size.1;
         for i in &self.mines{
-            if size % counter == 0{
-                println!("\n");
+            if (y - 1) == i.position.1{
+                println!("");
             }
-            println!("{:?} ", i.position);
-            counter = counter + 1;
+
+            print!("x");
+
         }
+        println!("");
+    }
+
+    fn remove_solved(&self, a: u32, b: u32){
+        let x = &self.size.0;
+        let y = &self.size.1;
+        for i in &self.mines{
+            if (y - 1) == i.position.1{
+                println!("");
+            }
+            if a == i.position.0 && b == i.position.1{
+                print!("-")
+            }
+            else{
+                print!("x");
+            }
+
+        }
+        println!("");
     }
 }
