@@ -32,13 +32,13 @@ impl MineField{
 
         &self.generate_empty_fields();
 
-        let num_of_mines = self.size.0 * self.size.1;
-
         for element in self.mines.iter_mut(){
             if 1 == rand::thread_rng().gen_range(0, 3){
                 (*element).active = true;
             }
         }
+
+        &self.mines.reverse();
 
     }
 
@@ -61,9 +61,8 @@ impl MineField{
     }
 
     pub fn print_fields_solved(&self){
-        let x = &self.size.0;
         let y = &self.size.1;
-        for i in &self.mines{
+        for i in self.mines.iter(){
             if (y - 1) == i.position.1{
                 println!("");
             }
@@ -78,27 +77,25 @@ impl MineField{
     }
 
     pub fn print_fields(&self){
-        let x = &self.size.0;
-        let y = &self.size.1;
-        for i in &self.mines{
+
+        let y = self.size.1;
+        for i in self.mines.iter(){
+            print!("x");
             if (y - 1) == i.position.1{
                 println!("");
             }
-
-            print!("x");
 
         }
         println!("");
     }
 
     fn remove_solved(&self, a: u32, b: u32){
-        let x = &self.size.0;
         let y = &self.size.1;
-        for i in &self.mines{
+        for i in self.mines.iter(){
             if (y - 1) == i.position.1{
-                println!("");
+                println!("x");
             }
-            if a == i.position.0 && b == i.position.1{
+            else if a == i.position.0 && b == i.position.1{
                 print!("-")
             }
             else{

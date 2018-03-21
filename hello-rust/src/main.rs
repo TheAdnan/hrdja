@@ -1,9 +1,7 @@
 mod structs;
 extern crate rand;
 
-use rand::Rng;
 use std::io::stdin;
-use structs::Mine;
 use structs::MineField;
 
 
@@ -20,14 +18,21 @@ fn main() {
 
     let mut x = 0;
     let mut y = 0;
-    loop{
 
+    println!("You have 5 tries!");
+
+    let mut counter = 0;
+
+    loop{
+        if counter == 5{
+            println!("Congrats, you've won!");
+        }
         println!("Enter coordinate x: ");
 
         let mut input_x = String::new();
         stdin().read_line(&mut input_x);
 
-        let mut trimmed_x = input_x.trim();
+        let trimmed_x = input_x.trim();
         match trimmed_x.parse::<u32>() {
             Ok(i) => x = i,
             Err(..) => println!("this was not an integer: {}", trimmed_x),
@@ -38,7 +43,7 @@ fn main() {
         let mut input_y = String::new();
         stdin().read_line(&mut input_y);
 
-        let mut trimmed_y = input_y.trim();
+        let trimmed_y = input_y.trim();
         match trimmed_y.parse::<u32>() {
             Ok(i) => y = i,
             Err(..) => println!("this was not an integer: {}", trimmed_y),
@@ -51,6 +56,8 @@ fn main() {
         else {
             println!("Good job!");
         }
+
+        counter = counter + 1;
 
     }
 
