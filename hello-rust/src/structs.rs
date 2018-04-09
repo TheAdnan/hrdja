@@ -4,8 +4,8 @@ use rand::Rng;
 
 #[derive(Clone)]
 pub struct Mine{
-    pub position: (u32, u32),
-    pub active: bool
+    position: (u32, u32),
+    active: bool
 }
 
 #[derive(Clone)]
