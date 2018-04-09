@@ -8,7 +8,6 @@ pub struct Mine{
     active: bool
 }
 
-#[derive(Clone)]
 pub struct MineField{
     pub size: (u32, u32),
     pub mines: Vec<Mine>
